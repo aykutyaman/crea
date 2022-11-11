@@ -1,6 +1,7 @@
 import * as express from 'express';
 import * as path from 'path';
 import * as D from '@crea/domain';
+import * as cors from 'cors';
 
 import db from './db';
 
@@ -9,6 +10,7 @@ const app = express();
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 app.use(express.json());
+app.use(cors());
 
 app.post('/api/login', (_req, res) => {
   res.send({});
