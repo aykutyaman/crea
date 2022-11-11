@@ -17,10 +17,14 @@ export type Date = t.TypeOf<typeof Date>;
 
 // TODO: distinguish User(logged) and UserLike(not logged)
 export const User = t.type({
+  id: ID,
   username: t.string,
   password: t.string,
 });
 export type User = t.TypeOf<typeof User>;
+
+export const Users = t.array(User);
+export type Users = t.TypeOf<typeof Users>;
 
 export const Product = t.type({
   id: ID,
