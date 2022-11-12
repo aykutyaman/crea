@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as D from '@crea/domain';
 import * as cors from 'cors';
 import * as bodyParser from 'body-parser';
-import { sign } from 'jsonwebtoken';
+import * as jose from 'jose';
 import { serialize } from 'cookie';
 import * as cookieParser from 'cookie-parser';
 
@@ -33,17 +33,17 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-app.post('/api/auth/login', (req, res) => {
+app.post('/api/auth/login', async (req, res) => {
   const { username } = req.body;
   if (username === 'user') {
-    const token = sign(
-      {
-        exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 30, // 30 days,
-        id: 'myUserId',
-        username: 'user',
-      },
-      secret
-    );
+    const token = await new jose.SignJWT({
+      id: 'myUserId',
+      username: 'user',
+    })
+      .setProtectedHeader({ alg: 'HS256' })
+      .setIssuedAt()
+      .setExpirationTime('30d')
+      .sign(new TextEncoder().encode(secret));
 
     const serialized = serialize('CreaJWT', token, {
       httpOnly: true,
