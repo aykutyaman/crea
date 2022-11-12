@@ -60,10 +60,12 @@ export function Login(_props: LoginProps) {
           }
         }}
       >
-        <AutoField name="username" className={styles.input} />
-        <AutoField name="password" className={styles.input} />
-        <ErrorsField />
-        <SubmitField className={styles.submit} />
+        <div className={styles.form}>
+          <AutoField name="username" className={styles.input} />
+          <AutoField name="password" className={styles.input} />
+          <ErrorsField />
+          <SubmitField className={styles.submit} />
+        </div>
       </AutoForm>
     </>
   );

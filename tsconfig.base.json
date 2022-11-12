@@ -16,6 +16,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@crea/design": ["libs/design/src/index.ts"],
       "@crea/domain": ["libs/domain/src/index.ts"]
     }
   },
