@@ -10,7 +10,7 @@ import * as cookieParser from 'cookie-parser';
 import db from './db';
 import { authenticateToken } from './authenticateToken';
 
-const secret = 'nosoup4u';
+const TOKEN_SECRET = process.env.TOKEN_SECRET;
 
 const app = express();
 
@@ -44,7 +44,7 @@ app.post('/api/auth/login', async (req, res) => {
       .setProtectedHeader({ alg: 'HS256' })
       .setIssuedAt()
       .setExpirationTime('30d')
-      .sign(new TextEncoder().encode(secret));
+      .sign(new TextEncoder().encode(TOKEN_SECRET));
 
     const serialized = serialize('CreaJWT', token, {
       httpOnly: true,

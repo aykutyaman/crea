@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { jwtVerify } from 'jose';
 
-const secret = 'nosoup4u';
+const TOKEN_SECRET = process.env.TOKEN_SECRET;
 
 export async function authenticateToken(
   req: Request,
@@ -13,7 +13,7 @@ export async function authenticateToken(
   if (!token) return res.sendStatus(401);
 
   try {
-    await jwtVerify(token, new TextEncoder().encode(secret));
+    await jwtVerify(token, new TextEncoder().encode(TOKEN_SECRET));
     return next();
   } catch (e) {
     return res.sendStatus(403);
