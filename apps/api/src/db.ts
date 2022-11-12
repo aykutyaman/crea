@@ -24,7 +24,7 @@ const db = {
     const sum = productComments
       .map((c) => c.score)
       .reduce((acc, score) => {
-        return acc + score;
+        return (acc + score) as D.Score;
       }, comment.score);
 
     const average = (sum / (productComments.length || 1)) as D.Score;

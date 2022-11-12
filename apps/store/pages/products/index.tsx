@@ -2,6 +2,11 @@ import { useEffect, useState } from 'react';
 import * as D from '@crea/domain';
 
 import { useRouter } from 'next/router';
+import getConfig from 'next/config';
+
+const {
+  publicRuntimeConfig: { API },
+} = getConfig();
 
 export interface ProductsProps {}
 
@@ -10,7 +15,7 @@ export function Products(props: ProductsProps) {
   const router = useRouter();
 
   useEffect(() => {
-    fetch(`http://localhost:3333/api/products`, {
+    fetch(`${API}/products`, {
       credentials: 'include',
     })
       .then((res) => {
@@ -31,7 +36,7 @@ export function Products(props: ProductsProps) {
 
   const handleLogout = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    const request = await fetch(`http://localhost:3333/api/auth/logout`, {
+    const request = await fetch(`${API}/auth/logout`, {
       credentials: 'include',
     });
 

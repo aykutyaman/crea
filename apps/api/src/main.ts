@@ -20,19 +20,21 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-const whiteList = ['http://localhost:4200'];
+const whiteList = [process.env.FRONT_END_APP];
 
-const corsOptions = {
-  credentials: true,
-  origin: (origin, callback) => {
-    if (whiteList.includes(origin)) {
-      return callback(null, true);
-    }
-    callback(new Error('not allowd by CORS'));
-  },
-};
+app.use(
+  cors({
+    credentials: true,
+    origin: (origin, callback) => {
+      console.log({ origin });
 
-app.use(cors(corsOptions));
+      if (origin && whiteList.includes(origin)) {
+        return callback(null, true);
+      }
+      callback(new Error('not allowd by CORS'));
+    },
+  })
+);
 
 app.post('/api/auth/login', async (req, res) => {
   const { username } = req.body;
@@ -75,7 +77,7 @@ app.get('/api/auth/logout', (req, res) => {
     });
   }
 
-  const serialized = serialize('CreaJWT', null, {
+  const serialized = serialize('CreaJWT', '', {
     httpOnly: true,
     secure: false,
     sameSite: 'strict',
@@ -115,7 +117,7 @@ app.post('/api/comment', authenticateToken, (req, res) => {
   res.send({ comment: db.addComment(comment as D.Comment) });
 });
 
-const port = process.env.port || 3333;
+const port = process.env.API_PORT;
 
 const server = app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`);

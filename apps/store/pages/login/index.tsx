@@ -1,5 +1,10 @@
+import getConfig from 'next/config';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+
+const {
+  publicRuntimeConfig: { API },
+} = getConfig();
 
 /* eslint-disable-next-line */
 export interface LoginProps {}
@@ -11,7 +16,7 @@ export function Login(props: LoginProps) {
 
   const handleLogin = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    const request = await fetch(`http://localhost:3333/api/auth/login`, {
+    const request = await fetch(`${API}/auth/login`, {
       method: 'POST',
       body: JSON.stringify({ username, password }),
       credentials: 'include',
