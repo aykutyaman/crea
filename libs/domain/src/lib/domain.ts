@@ -1,4 +1,5 @@
 import * as t from 'io-ts';
+import { withMessage } from 'io-ts-types';
 
 export const ID = t.string;
 export type ID = t.TypeOf<typeof ID>;
@@ -16,11 +17,20 @@ export const Date = t.string;
 export type Date = t.TypeOf<typeof Date>;
 
 // TODO: distinguish User(logged) and UserLike(not logged)
+const Username = withMessage(
+  t.string,
+  (value) => `Username should be a string: ${value}`
+);
+
+const Password = withMessage(
+  t.string,
+  (value) => `Password should be a string: ${value}`
+);
 export const User = t.type({
-  id: ID,
-  username: t.string,
-  password: t.string,
+  username: Username,
+  password: Password,
 });
+
 export type User = t.TypeOf<typeof User>;
 
 export const Users = t.array(User);
