@@ -8,6 +8,7 @@ import { serialize } from 'cookie';
 import * as cookieParser from 'cookie-parser';
 
 import db from './db';
+import { authenticateToken } from './authenticateToken';
 
 const secret = 'nosoup4u';
 
@@ -87,7 +88,7 @@ app.get('/api/auth/logout', (req, res) => {
   res.status(200).json({ message: 'logut-success' });
 });
 
-app.get('/api/products', (req, res) => {
+app.get('/api/products', authenticateToken, (req, res) => {
   const { cookies } = req;
   const jwt = cookies.CreaJWT;
   if (!jwt) {
@@ -99,17 +100,17 @@ app.get('/api/products', (req, res) => {
   res.send({ products: db.getProducts() });
 });
 
-app.get('/api/products/:productId', (req, res) => {
+app.get('/api/products/:productId', authenticateToken, (req, res) => {
   const { productId } = req.params;
   res.send({ products: db.getProduct(productId as D.ID) });
 });
 
-app.get('/api/comments/:productId', (req, res) => {
+app.get('/api/comments/:productId', authenticateToken, (req, res) => {
   const { productId } = req.params;
   res.send({ comments: db.getComments(productId as D.ID) });
 });
 
-app.post('/api/comment', (req, res) => {
+app.post('/api/comment', authenticateToken, (req, res) => {
   const comment = req.body;
   res.send({ comment: db.addComment(comment as D.Comment) });
 });

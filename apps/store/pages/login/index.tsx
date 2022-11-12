@@ -22,7 +22,7 @@ export function Login(props: LoginProps) {
     });
 
     if (request.status === 200) {
-      router.push('/');
+      router.push('/products');
     }
   };
   const handleUsername = (e: React.ChangeEvent<HTMLInputElement>) => {
