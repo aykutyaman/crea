@@ -2,25 +2,100 @@ import * as express from 'express';
 import * as path from 'path';
 import * as D from '@crea/domain';
 import * as cors from 'cors';
+import * as bodyParser from 'body-parser';
+import { sign } from 'jsonwebtoken';
+import { serialize } from 'cookie';
+import * as cookieParser from 'cookie-parser';
 
 import db from './db';
+
+const secret = 'nosoup4u';
 
 const app = express();
 
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 app.use(express.json());
-app.use(cors());
+app.use(bodyParser.json());
+app.use(cookieParser());
 
-app.post('/api/login', (_req, res) => {
-  res.send({});
+const whiteList = ['http://localhost:4200'];
+
+const corsOptions = {
+  credentials: true,
+  origin: (origin, callback) => {
+    if (whiteList.includes(origin)) {
+      return callback(null, true);
+    }
+    callback(new Error('not allowd by CORS'));
+  },
+};
+
+app.use(cors(corsOptions));
+
+app.post('/api/auth/login', (req, res) => {
+  const { username } = req.body;
+  if (username === 'user') {
+    const token = sign(
+      {
+        exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 30, // 30 days,
+        id: 'myUserId',
+        username: 'user',
+      },
+      secret
+    );
+
+    const serialized = serialize('CreaJWT', token, {
+      httpOnly: true,
+      secure: false,
+      sameSite: 'strict',
+      maxAge: 60 * 60 * 24 * 30,
+      path: '/',
+    });
+
+    res.setHeader('Set-Cookie', serialized);
+
+    res.status(200).json({ message: 'login-success' });
+  } else {
+    return res.status(401).json({
+      message: 'Invalid Credentials',
+    });
+  }
 });
 
-app.post('/api/logout', (_req, res) => {
-  res.send({});
+app.get('/api/auth/logout', (req, res) => {
+  const { cookies } = req;
+
+  const jwt = cookies.CreaJWT;
+
+  if (!jwt) {
+    return res.json({
+      message: 'already-logged-out',
+    });
+  }
+
+  const serialized = serialize('CreaJWT', null, {
+    httpOnly: true,
+    secure: false,
+    sameSite: 'strict',
+    maxAge: -1,
+    path: '/',
+  });
+
+  res.setHeader('Set-Cookie', serialized);
+
+  res.status(200).json({ message: 'logut-success' });
 });
 
-app.get('/api/products', (_req, res) => {
+app.get('/api/products', (req, res) => {
+  const { cookies } = req;
+  const jwt = cookies.CreaJWT;
+  if (!jwt) {
+    return res.status(401).json({
+      products: [],
+      message: 'invalid-token',
+    });
+  }
   res.send({ products: db.getProducts() });
 });
 
@@ -42,6 +117,6 @@ app.post('/api/comment', (req, res) => {
 const port = process.env.port || 3333;
 
 const server = app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}/api`);
+  console.log(`Listening at http://localhost:${port}`);
 });
 server.on('error', console.error);
