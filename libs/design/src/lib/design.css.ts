@@ -40,6 +40,8 @@ const responsiveProperties = defineProperties({
       ...vars.space,
       ...vars.sizes,
     },
+    borderRadius: vars.borderRadius,
+    boxShadow: vars.shadows,
 
     // gridTemplateColumns: ["1fr", "repeat(12, minmax(0, 1fr))"],
     // gridColumnStart: [1, 2, 3, 4],
@@ -95,7 +97,7 @@ const responsiveProperties = defineProperties({
     maxHeight: { ...vars.sizes, 0: '0px', ...vars.space },
     minHeight: { ...vars.sizes, 0: '0px' },
     maxWidth: { ...vars.sizes, 0: '0px', ...vars.space, ...breakpoint },
-    minWidth: { ...vars.sizes, 0: '0px' },
+    minWidth: { ...vars.sizes, 0: '0px', ...vars.space, ...breakpoint },
 
     alignItems: [...flexAlignment, 'baseline'],
     alignSelf: [...flexAlignment, 'baseline'],
@@ -135,6 +137,7 @@ const unconditionalProperties = defineProperties({
     opacity: vars.opacity,
     textTransform: ['capitalize', 'lowercase', 'uppercase'],
     visibility: ['hidden', 'visible'],
+    borderColor: vars.color,
   },
 });
 

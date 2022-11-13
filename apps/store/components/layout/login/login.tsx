@@ -7,7 +7,11 @@ export interface LoginProps {
 }
 
 export function Login({ children }: LoginProps) {
-  return <div className={styles.container}>{children}</div>;
+  return (
+    <main className={styles.main}>
+      <div className={styles.container}>{children}</div>
+    </main>
+  );
 }
 
 export default Login;

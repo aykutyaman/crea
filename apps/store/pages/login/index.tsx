@@ -53,17 +53,15 @@ export function Login(_props: LoginProps) {
   };
 
   return (
-    <>
-      <h1>
-        <Image
-          src="https://www.creainc.us/assets/img/logo.svg"
-          alt="Crea"
-          width={100}
-          height={100}
-        />
-      </h1>
-      <p>Sign in</p>
-      <p>to continue to products list</p>
+    <div className={styles.container}>
+      <Image
+        src="https://www.creainc.us/assets/img/logo.svg"
+        alt="Crea"
+        width={150}
+        height={75}
+      />
+      <h1 className={styles.headingText}>Sign in</h1>
+      <p className={styles.headingSubtext}>to continue to product list</p>
       <AutoForm
         schema={bridge}
         onSubmit={(user) => {
@@ -73,7 +71,7 @@ export function Login(_props: LoginProps) {
           }
         }}
       >
-        <div className={styles.form}>
+        <div className={styles.formContainer}>
           <AutoField
             name="username"
             className={styles.field}
@@ -84,11 +82,11 @@ export function Login(_props: LoginProps) {
             className={styles.field}
             placeholder="Password"
           />
-          <ErrorsField />
-          <SubmitField className={styles.submit} />
+          <SubmitField className={styles.submit} value="Login" />
         </div>
+        <ErrorsField />
       </AutoForm>
-    </>
+    </div>
   );
 }
 

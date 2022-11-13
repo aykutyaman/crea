@@ -20,7 +20,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
       <Head>
         <title>Welcome to store!</title>
       </Head>
-      <main className="app">{getLayout(<Component {...pageProps} />)}</main>
+      {getLayout(<Component {...pageProps} />)}
     </>
   );
 }

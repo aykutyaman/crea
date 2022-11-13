@@ -1,3 +1,2 @@
-export * from './lib/design';
-
-export const foo = 'bar';
+export * from './lib/design.css';
+export * from './lib/var.css';
