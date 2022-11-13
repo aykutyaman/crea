@@ -10,6 +10,8 @@ import {
 import { createValidator } from '../helpers';
 import * as D from '@crea/domain';
 import * as styles from './index.css';
+import { ReactElement } from 'react';
+import Layout from '../../components/layout/login/login';
 
 const {
   publicRuntimeConfig: { API },
@@ -70,5 +72,9 @@ export function Login(_props: LoginProps) {
     </>
   );
 }
+
+Login.getLayout = (page: ReactElement) => {
+  return <Layout>{page}</Layout>;
+};
 
 export default Login;
