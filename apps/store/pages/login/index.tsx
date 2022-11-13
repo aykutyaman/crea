@@ -1,4 +1,5 @@
 import getConfig from 'next/config';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { JSONSchemaBridge } from 'uniforms-bridge-json-schema';
 import {
@@ -53,6 +54,16 @@ export function Login(_props: LoginProps) {
 
   return (
     <>
+      <h1>
+        <Image
+          src="https://www.creainc.us/assets/img/logo.svg"
+          alt="Crea"
+          width={100}
+          height={100}
+        />
+      </h1>
+      <p>Sign in</p>
+      <p>to continue to products list</p>
       <AutoForm
         schema={bridge}
         onSubmit={(user) => {
@@ -63,8 +74,16 @@ export function Login(_props: LoginProps) {
         }}
       >
         <div className={styles.form}>
-          <AutoField name="username" className={styles.input} />
-          <AutoField name="password" className={styles.input} />
+          <AutoField
+            name="username"
+            className={styles.field}
+            placeholder="Username"
+          />
+          <AutoField
+            name="password"
+            className={styles.field}
+            placeholder="Password"
+          />
           <ErrorsField />
           <SubmitField className={styles.submit} />
         </div>

@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import * as styles from './login.css';
 
 /* eslint-disable-next-line */
 export interface LoginProps {
@@ -6,7 +7,7 @@ export interface LoginProps {
 }
 
 export function Login({ children }: LoginProps) {
-  return <div className="LOGINLAYOUT">{children}</div>;
+  return <div className={styles.container}>{children}</div>;
 }
 
 export default Login;

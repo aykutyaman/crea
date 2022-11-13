@@ -21,6 +21,9 @@ const nextConfig = {
   serverRuntimeConfig: {
     API: process.env.NEXT_PUBLIC_API,
   },
+  images: {
+    domains: ['www.creainc.us'],
+  },
 };
 
 module.exports = withVanillaExtract(withNx(nextConfig));

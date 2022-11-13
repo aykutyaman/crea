@@ -13,6 +13,7 @@ const borderSizeScale = createScale(1.4, 1);
 
 export const vars = createGlobalTheme(':root', {
   space: {
+    auto: 'auto',
     none: '0',
     '0x': spaceScale(0),
     '1x': spaceScale(1),

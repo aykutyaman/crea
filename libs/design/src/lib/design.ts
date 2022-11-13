@@ -4,7 +4,7 @@ import { vars } from './var.css';
 const flexAlignment = ['flex-start', 'center', 'flex-end', 'stretch'] as const;
 
 const breakpoint = {
-  sm: 640,
+  sm: 480,
   md: 768,
   lg: 1024,
   xl: 1280,
@@ -94,6 +94,8 @@ const responsiveProperties = defineProperties({
     marginTop: vars.space,
     maxHeight: { ...vars.sizes, 0: '0px', ...vars.space },
     minHeight: { ...vars.sizes, 0: '0px' },
+    maxWidth: { ...vars.sizes, 0: '0px', ...vars.space, ...breakpoint },
+    minWidth: { ...vars.sizes, 0: '0px' },
 
     alignItems: [...flexAlignment, 'baseline'],
     alignSelf: [...flexAlignment, 'baseline'],

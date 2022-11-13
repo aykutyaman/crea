@@ -1,10 +1,20 @@
-import { style } from '@vanilla-extract/css';
+import { style, globalStyle } from '@vanilla-extract/css';
 import { sprinkles } from '@crea/design';
+import { vars } from 'libs/design/src/lib/var.css';
 
-export const input = style({
+export const field = style({
   border: '2px solid black',
   display: 'flex',
   justifyContent: 'space-between',
+});
+
+globalStyle(`${field} > label`, {
+  display: 'none',
+});
+
+globalStyle(`${field} > input`, {
+  width: '100%',
+  padding: vars.space['3x'],
 });
 
 export const submit = style([
