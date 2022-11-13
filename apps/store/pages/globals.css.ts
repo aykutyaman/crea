@@ -30,3 +30,7 @@ globalStyle('html, body, #__next', {
   width: '100%',
   height: '100%',
 });
+
+globalStyle('li', {
+  listStyle: 'none',
+});

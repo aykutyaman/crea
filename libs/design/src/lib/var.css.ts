@@ -53,6 +53,7 @@ export const vars = createGlobalTheme(':root', {
     sans: `"Inter var", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"`,
   },
   fontSize: {
+    '-1x': fontSizeScale(-1),
     '0x': fontSizeScale(0),
     '1x': fontSizeScale(1),
     '2x': fontSizeScale(2),

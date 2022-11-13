@@ -12,7 +12,7 @@ export const container = style([
       [breakpoints.sm['@media']]: {
         display: 'grid',
         gridTemplateColumns: '5fr 1fr',
-        gridTemplateRows: '1fr 5fr 1fr',
+        gridTemplateRows: '1fr 12fr 1fr',
         gridTemplateAreas: `
 "logo nav"
 "main main"
@@ -23,38 +23,11 @@ export const container = style([
   },
 ]);
 
-export const logo = style([
-  sprinkles({
-    borderWidth: '0x',
-  }),
-  {
-    gridArea: 'logo',
-  },
-]);
-
-export const nav = style([
-  sprinkles({
-    borderWidth: '0x',
-  }),
-  {
-    gridArea: 'nav',
-  },
-]);
-
 export const main = style([
   sprinkles({
     borderWidth: '0x',
   }),
   {
     gridArea: 'main',
-  },
-]);
-
-export const footer = style([
-  sprinkles({
-    borderWidth: '0x',
-  }),
-  {
-    gridArea: 'footer',
   },
 ]);

@@ -1,6 +1,7 @@
 import { ReactElement, useEffect, useState } from 'react';
 import * as D from '@crea/domain';
 import Layout from '../../components/layout/product/product';
+import * as styles from './index.css';
 
 import { useRouter } from 'next/router';
 import getConfig from 'next/config';
@@ -35,23 +36,8 @@ export function Products(props: ProductsProps) {
       });
   }, [router]);
 
-  const handleLogout = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    const request = await fetch(`${API}/auth/logout`, {
-      credentials: 'include',
-    });
-
-    if (request.status === 200) {
-      router.push('/login');
-    }
-  };
-
   return (
     <div>
-      <button onClick={handleLogout} className="">
-        Logout
-      </button>
-
       <ul className="">
         {products.map((product) => (
           <li key={product.id}>{product.name}</li>
