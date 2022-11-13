@@ -47,12 +47,15 @@ export const field = sprinkles({
   borderColor: 'gray-300',
 });
 
-globalStyle(`${field} > label`, {
+// TODO: select properly like this: ${field} > label
+globalStyle(`label`, {
   display: 'none',
 });
 
-globalStyle(`${field} > input`, {
+// TODO: select properly like this: ${field} > input
+globalStyle(`input`, {
   width: '100%',
+  height: '100%',
   padding: vars.space['3x'],
 });
 

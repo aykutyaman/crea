@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import * as D from '@crea/domain';
+import Layout from '../../components/layout/product/product';
 
 import { useRouter } from 'next/router';
 import getConfig from 'next/config';
@@ -59,5 +60,9 @@ export function Products(props: ProductsProps) {
     </div>
   );
 }
+
+Products.getLayout = (page: ReactElement) => {
+  return <Layout>{page}</Layout>;
+};
 
 export default Products;

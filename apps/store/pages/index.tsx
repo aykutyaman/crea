@@ -1,7 +1,5 @@
-import styles from './index.module.css';
-
 export function Index() {
-  return <div className={styles.page}>HOME</div>;
+  return <div>HOME</div>;
 }
 
 export default Index;
