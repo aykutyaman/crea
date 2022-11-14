@@ -3,7 +3,7 @@ import { vars } from './var.css';
 
 const flexAlignment = ['flex-start', 'center', 'flex-end', 'stretch'] as const;
 
-const breakpoint = {
+export const breakpoint = {
   sm: 480,
   md: 768,
   lg: 1024,

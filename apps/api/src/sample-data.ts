@@ -17,7 +17,7 @@ export const products: D.Products = [
     image:
       'https://res.cloudinary.com/kc-cloud/image/upload/v1618064911/vue-fundamentals/ae235_pn5koq.jpg',
     price: 159.99,
-    score: 3,
+    score: 0,
     description: LoremIpsum,
     arrivalDate: '1668178003',
   },
@@ -27,7 +27,7 @@ export const products: D.Products = [
     image:
       'https://res.cloudinary.com/kc-cloud/image/upload/v1618064911/vue-fundamentals/ae235_pn5koq.jpg',
     price: 99.99,
-    score: 3,
+    score: 2,
     description: LoremIpsum,
     arrivalDate: '1668178003',
   },
@@ -37,7 +37,7 @@ export const products: D.Products = [
     image:
       'https://res.cloudinary.com/kc-cloud/image/upload/v1618065046/vue-fundamentals/ae235_t5vels.jpg',
     price: 149.99,
-    score: 3,
+    score: 1,
     description: LoremIpsum,
     arrivalDate: '1668178003',
   },
@@ -47,7 +47,7 @@ export const products: D.Products = [
     image:
       'https://res.cloudinary.com/kc-cloud/image/upload/v1618065126/vue-fundamentals/ae235_omg2wz.jpg',
     price: 114.99,
-    score: 3,
+    score: 5,
     description: LoremIpsum,
     arrivalDate: '1668178003',
   },
@@ -57,7 +57,7 @@ export const products: D.Products = [
     image:
       'https://res.cloudinary.com/kc-cloud/image/upload/v1618065336/vue-fundamentals/ae235_x4gbi5.jpg',
     price: 179.99,
-    score: 3,
+    score: 4,
     description: LoremIpsum,
     arrivalDate: '1668178003',
   },
@@ -67,7 +67,7 @@ export const products: D.Products = [
     image:
       'https://res.cloudinary.com/kc-cloud/image/upload/v1618065418/vue-fundamentals/ae235_kawdlk.jpg',
     price: 199.99,
-    score: 3,
+    score: 1,
     description: LoremIpsum,
     arrivalDate: '1668178003',
   },
@@ -77,7 +77,7 @@ export const products: D.Products = [
     image:
       'https://res.cloudinary.com/kc-cloud/image/upload/v1618065457/vue-fundamentals/ae235_p0c9if.jpg',
     price: 159.99,
-    score: 3,
+    score: 4,
     description: LoremIpsum,
     arrivalDate: '1668178003',
   },
@@ -87,17 +87,17 @@ export const products: D.Products = [
     image:
       'https://res.cloudinary.com/kc-cloud/image/upload/v1618065567/vue-fundamentals/ae235_lp8e0g.jpg',
     price: 109.99,
-    score: 3,
+    score: 5,
     description: LoremIpsum,
     arrivalDate: '1668178003',
   },
   {
     id: '321009',
-    name: 'DTM50Z 18V LI-ION LXT CORDLESS MULTI-TOOL - BARE ',
+    name: 'DTM50Z 18V LI-ION LXT CORDLESS MULTI-TOOL - BARE BARE ',
     image:
       'https://res.cloudinary.com/kc-cloud/image/upload/v1618065663/vue-fundamentals/ae235_rezbvf.jpg',
     price: 89.99,
-    score: 3,
+    score: 2,
     description: LoremIpsum,
     arrivalDate: '1668178003',
   },
@@ -107,7 +107,7 @@ export const products: D.Products = [
     image:
       'https://res.cloudinary.com/kc-cloud/image/upload/v1618065708/vue-fundamentals/ae235_libjf0.jpg',
     price: 69.99,
-    score: 3,
+    score: 1,
     description: LoremIpsum,
     arrivalDate: '1668178003',
   },
@@ -117,7 +117,7 @@ export const products: D.Products = [
     image:
       'https://res.cloudinary.com/kc-cloud/image/upload/v1618065831/vue-fundamentals/ae235_xgqpet.jpg',
     price: 39.98,
-    score: 3,
+    score: 4,
     description: LoremIpsum,
     arrivalDate: '1668178003',
   },
@@ -127,7 +127,7 @@ export const products: D.Products = [
     image:
       'https://res.cloudinary.com/kc-cloud/image/upload/v1618065948/vue-fundamentals/ae235_ovlsu8.jpg',
     price: 249.99,
-    score: 3,
+    score: 5,
     description: LoremIpsum,
     arrivalDate: '1668178003',
   },
@@ -137,7 +137,7 @@ export const products: D.Products = [
     image:
       'https://res.cloudinary.com/kc-cloud/image/upload/v1618066003/vue-fundamentals/ae235_mjhcar.jpg',
     price: 149.99,
-    score: 3,
+    score: 1,
     description: LoremIpsum,
     arrivalDate: '1668178003',
   },
@@ -147,7 +147,7 @@ export const products: D.Products = [
     image:
       'https://res.cloudinary.com/kc-cloud/image/upload/v1618066060/vue-fundamentals/ae235_gvll6v.jpg',
     price: 79.99,
-    score: 3,
+    score: 1,
     description: LoremIpsum,
     arrivalDate: '1668178003',
   },
@@ -275,7 +275,6 @@ export const products: D.Products = [
 
 export const users: D.Users = [
   {
-    id: 'myUserId',
     username: 'user',
     password: '34819d7beeabb9260a5c854bc85b3e44',
   },

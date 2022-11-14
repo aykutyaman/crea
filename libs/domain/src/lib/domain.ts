@@ -5,6 +5,7 @@ export const ID = t.string;
 export type ID = t.TypeOf<typeof ID>;
 
 export const Score = t.union([
+  t.literal(0),
   t.literal(1),
   t.literal(2),
   t.literal(3),

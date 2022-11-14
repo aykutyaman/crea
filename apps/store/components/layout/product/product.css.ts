@@ -4,15 +4,17 @@ import { breakpoints, sprinkles } from '@crea/design';
 export const container = style([
   sprinkles({
     borderWidth: '0x',
-    maxWidth: 'sm',
+    borderColor: 'gray-300',
+    maxWidth: 'md',
     marginX: 'auto',
+    marginY: '2x',
   }),
   {
     '@media': {
       [breakpoints.sm['@media']]: {
         display: 'grid',
         gridTemplateColumns: '5fr 1fr',
-        gridTemplateRows: '1fr 12fr 1fr',
+        gridTemplateRows: 'auto 9fr auto',
         gridTemplateAreas: `
 "logo nav"
 "main main"

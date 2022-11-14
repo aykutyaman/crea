@@ -22,7 +22,7 @@ const nextConfig = {
     API: process.env.NEXT_PUBLIC_API,
   },
   images: {
-    domains: ['www.creainc.us'],
+    domains: ['www.creainc.us', 'res.cloudinary.com'],
   },
 };
 
