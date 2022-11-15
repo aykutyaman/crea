@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css';
-import { breakpoints, sprinkles } from '@crea/design';
+import { breakpoints, sprinkles, vars } from '@crea/design';
 
 export const container = style([
   sprinkles({
@@ -26,9 +26,7 @@ export const container = style([
 ]);
 
 export const main = style([
-  sprinkles({
-    borderWidth: '0x',
-  }),
+  sprinkles({}),
   {
     gridArea: 'main',
   },

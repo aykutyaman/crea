@@ -104,7 +104,7 @@ app.get('/api/products', authenticateToken, (req, res) => {
 
 app.get('/api/products/:productId', authenticateToken, (req, res) => {
   const { productId } = req.params;
-  res.send({ products: db.getProduct(productId as D.ID) });
+  res.send({ product: db.getProduct(productId as D.ID) });
 });
 
 app.get('/api/comments/:productId', authenticateToken, (req, res) => {

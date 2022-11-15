@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css';
-import { sprinkles } from '@crea/design';
+import { sprinkles, vars } from '@crea/design';
 
 export const logo = style([
   sprinkles({
