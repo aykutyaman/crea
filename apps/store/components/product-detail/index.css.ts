@@ -10,7 +10,7 @@ export const container = style([
       [breakpoints.sm['@media']]: {
         display: 'grid',
         gridTemplateColumns: '2fr 3fr',
-        gridTemplateRows: '1fr 1fr',
+        gridTemplateRows: '1fr auto',
         gridTemplateAreas: `
 "image summary"
 "details details"
@@ -23,7 +23,9 @@ export const container = style([
 export const image = style([
   sprinkles({
     borderWidth: '0x',
+    borderRadius: '0x',
     borderColor: 'gray-300',
+    marginLeft: '2x',
   }),
   {
     gridArea: 'image',
@@ -125,11 +127,13 @@ export const arrivalDateContent = style([
   {},
 ]);
 
-export const details = style([
-  sprinkles({
-    borderWidth: '2x',
-  }),
-  {
-    gridArea: 'details',
-  },
-]);
+export const details = style({
+  gridArea: 'details',
+});
+
+export const description = sprinkles({
+  color: 'slate-900',
+  fontSize: '-1x',
+  fontWeight: 'light',
+  padding: '2x',
+});

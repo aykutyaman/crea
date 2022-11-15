@@ -4,6 +4,7 @@ import { breakpoints, sprinkles, vars } from '@crea/design';
 export const container = style([
   sprinkles({
     borderWidth: '0x',
+    borderRadius: '0x',
     borderColor: 'gray-300',
     maxWidth: 'md',
     marginX: 'auto',

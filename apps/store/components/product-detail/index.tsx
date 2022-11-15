@@ -51,7 +51,7 @@ export const ProductDetail = ({ product }: ProductDetailProps) => {
         <Tabs tabs={tabs} value={tab} onChange={setTab} />
 
         {tab === 'details' ? (
-          <div>Details Compoment</div>
+          <div className={styles.description}>{product.description}</div>
         ) : (
           <div>Comments Component</div>
         )}
