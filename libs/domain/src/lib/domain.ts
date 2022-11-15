@@ -44,6 +44,7 @@ export const Product = t.type({
   score: Score,
   image: t.string,
   description: t.string,
+  shortDescription: t.string,
   arrivalDate: Date,
 });
 export type Product = t.TypeOf<typeof Product>;

@@ -9,6 +9,7 @@
   },
   "private": true,
   "dependencies": {
+    "@buildo/bento-design-system": "^0.14.0",
     "@vanilla-extract/next-plugin": "^2.1.1",
     "@vanilla-extract/sprinkles": "^1.5.0",
     "body-parser": "^1.20.1",

@@ -10,6 +10,9 @@ Doloremque voluptatem exercitationem molestias dolor. Quia odit distinctio conse
 
 Cum dignissimos rem qui est consequatur saepe inventore. Cumque excepturi minus voluptatibus in eligendi. Non et et enim pariatur maiores. Explicabo in quo atque.`;
 
+const LoremIpsumShort =
+  'Et iure et rerum. Rerum doloremque voluptatem nisi voluptatibus saepe. Sed et placeat ut ea ut ipsam. Voluptatem illum eum cupiditate accusantium qui sed non vero. Est magni occaecati temporibus. Facilis adipisci illo impedit. Corrupti omnis illum rerum.';
+
 export const products: D.Products = [
   {
     id: '321001',
@@ -19,6 +22,7 @@ export const products: D.Products = [
     price: 159.99,
     score: 0,
     description: LoremIpsum,
+    shortDescription: LoremIpsumShort,
     arrivalDate: '1668178003',
   },
   {
@@ -29,6 +33,7 @@ export const products: D.Products = [
     price: 99.99,
     score: 2,
     description: LoremIpsum,
+    shortDescription: LoremIpsumShort,
     arrivalDate: '1668178003',
   },
   {
@@ -39,6 +44,7 @@ export const products: D.Products = [
     price: 149.99,
     score: 1,
     description: LoremIpsum,
+    shortDescription: LoremIpsumShort,
     arrivalDate: '1668178003',
   },
   {
@@ -49,6 +55,7 @@ export const products: D.Products = [
     price: 114.99,
     score: 5,
     description: LoremIpsum,
+    shortDescription: LoremIpsumShort,
     arrivalDate: '1668178003',
   },
   {
@@ -59,6 +66,7 @@ export const products: D.Products = [
     price: 179.99,
     score: 4,
     description: LoremIpsum,
+    shortDescription: LoremIpsumShort,
     arrivalDate: '1668178003',
   },
   {
@@ -69,6 +77,7 @@ export const products: D.Products = [
     price: 199.99,
     score: 1,
     description: LoremIpsum,
+    shortDescription: LoremIpsumShort,
     arrivalDate: '1668178003',
   },
   {
@@ -79,6 +88,7 @@ export const products: D.Products = [
     price: 159.99,
     score: 4,
     description: LoremIpsum,
+    shortDescription: LoremIpsumShort,
     arrivalDate: '1668178003',
   },
   {
@@ -89,6 +99,7 @@ export const products: D.Products = [
     price: 109.99,
     score: 5,
     description: LoremIpsum,
+    shortDescription: LoremIpsumShort,
     arrivalDate: '1668178003',
   },
   {
@@ -99,6 +110,7 @@ export const products: D.Products = [
     price: 89.99,
     score: 2,
     description: LoremIpsum,
+    shortDescription: LoremIpsumShort,
     arrivalDate: '1668178003',
   },
   {
@@ -109,6 +121,7 @@ export const products: D.Products = [
     price: 69.99,
     score: 1,
     description: LoremIpsum,
+    shortDescription: LoremIpsumShort,
     arrivalDate: '1668178003',
   },
   {
@@ -119,6 +132,7 @@ export const products: D.Products = [
     price: 39.98,
     score: 4,
     description: LoremIpsum,
+    shortDescription: LoremIpsumShort,
     arrivalDate: '1668178003',
   },
   {
@@ -129,6 +143,7 @@ export const products: D.Products = [
     price: 249.99,
     score: 5,
     description: LoremIpsum,
+    shortDescription: LoremIpsumShort,
     arrivalDate: '1668178003',
   },
   {
@@ -139,6 +154,7 @@ export const products: D.Products = [
     price: 149.99,
     score: 1,
     description: LoremIpsum,
+    shortDescription: LoremIpsumShort,
     arrivalDate: '1668178003',
   },
   {
@@ -149,6 +165,7 @@ export const products: D.Products = [
     price: 79.99,
     score: 1,
     description: LoremIpsum,
+    shortDescription: LoremIpsumShort,
     arrivalDate: '1668178003',
   },
   {
@@ -159,6 +176,7 @@ export const products: D.Products = [
     price: 289.99,
     score: 3,
     description: LoremIpsum,
+    shortDescription: LoremIpsumShort,
     arrivalDate: '1668178003',
   },
   {
@@ -169,6 +187,7 @@ export const products: D.Products = [
     price: 69.99,
     score: 3,
     description: LoremIpsum,
+    shortDescription: LoremIpsumShort,
     arrivalDate: '1668178003',
   },
   {
@@ -179,6 +198,7 @@ export const products: D.Products = [
     price: 99.98,
     score: 3,
     description: LoremIpsum,
+    shortDescription: LoremIpsumShort,
     arrivalDate: '1668178003',
   },
   {
@@ -189,6 +209,7 @@ export const products: D.Products = [
     price: 49.99,
     score: 3,
     description: LoremIpsum,
+    shortDescription: LoremIpsumShort,
     arrivalDate: '1668178003',
   },
   {
@@ -199,6 +220,7 @@ export const products: D.Products = [
     price: 99.98,
     score: 3,
     description: LoremIpsum,
+    shortDescription: LoremIpsumShort,
     arrivalDate: '1668178003',
   },
   {
@@ -209,6 +231,7 @@ export const products: D.Products = [
     price: 69.99,
     score: 3,
     description: LoremIpsum,
+    shortDescription: LoremIpsumShort,
     arrivalDate: '1668178003',
   },
   {
@@ -219,6 +242,7 @@ export const products: D.Products = [
     price: 129.99,
     score: 3,
     description: LoremIpsum,
+    shortDescription: LoremIpsumShort,
     arrivalDate: '1668178003',
   },
   {
@@ -229,6 +253,7 @@ export const products: D.Products = [
     price: 39.99,
     score: 3,
     description: LoremIpsum,
+    shortDescription: LoremIpsumShort,
     arrivalDate: '1668178003',
   },
   {
@@ -239,6 +264,7 @@ export const products: D.Products = [
     price: 16.88,
     score: 3,
     description: LoremIpsum,
+    shortDescription: LoremIpsumShort,
     arrivalDate: '1668178003',
   },
   {
@@ -249,6 +275,7 @@ export const products: D.Products = [
     price: 399.98,
     score: 3,
     description: LoremIpsum,
+    shortDescription: LoremIpsumShort,
     arrivalDate: '1668178003',
   },
   {
@@ -259,6 +286,7 @@ export const products: D.Products = [
     price: 199.98,
     score: 3,
     description: LoremIpsum,
+    shortDescription: LoremIpsumShort,
     arrivalDate: '1668178003',
   },
   {
@@ -269,6 +297,7 @@ export const products: D.Products = [
     price: 129.98,
     score: 3,
     description: LoremIpsum,
+    shortDescription: LoremIpsumShort,
     arrivalDate: '1668178003',
   },
 ];
