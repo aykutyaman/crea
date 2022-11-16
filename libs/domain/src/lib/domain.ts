@@ -27,11 +27,19 @@ const Password = withMessage(
   t.string,
   (value) => `Password should be a string: ${value}`
 );
-export const User = t.type({
+
+export const UserLike = t.type({
   username: Username,
   password: Password,
-  fullname: t.string,
 });
+export type UserLike = t.TypeOf<typeof UserLike>;
+
+export const User = t.intersection([
+  UserLike,
+  t.type({
+    fullname: t.string,
+  }),
+]);
 
 export type User = t.TypeOf<typeof User>;
 

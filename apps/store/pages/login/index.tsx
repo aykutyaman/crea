@@ -18,7 +18,7 @@ const {
   publicRuntimeConfig: { API },
 } = getConfig();
 
-const schemaValidator = createValidator(D.User);
+const schemaValidator = createValidator(D.UserLike);
 const schema = {
   title: 'Loaded',
   type: 'object',
@@ -65,7 +65,7 @@ export function Login(_props: LoginProps) {
       <AutoForm
         schema={bridge}
         onSubmit={(user) => {
-          const decoded = D.User.decode(user);
+          const decoded = D.UserLike.decode(user);
           if (decoded._tag === 'Right') {
             handleLogin(decoded.right);
           }

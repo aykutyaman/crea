@@ -30,7 +30,8 @@
     "tslib": "^2.3.0",
     "uniforms": "^4.0.0-alpha.0",
     "uniforms-bridge-json-schema": "^4.0.0-alpha.0",
-    "uniforms-unstyled": "^4.0.0-alpha.0"
+    "uniforms-unstyled": "^4.0.0-alpha.0",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@nrwl/cli": "15.0.13",
@@ -53,6 +54,7 @@
     "@types/node": "16.11.7",
     "@types/react": "18.0.20",
     "@types/react-dom": "18.0.6",
+    "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",
     "babel-jest": "28.1.1",

@@ -3,6 +3,7 @@ import * as D from '@crea/domain';
 import getConfig from 'next/config';
 import Comment from '../comment';
 import * as styles from './index.css';
+import AddComment from '../add-comment';
 
 export interface CommentsProps {
   children?: ReactNode;
@@ -25,12 +26,15 @@ export const Comments = ({ productId }: CommentsProps) => {
   }, [productId]);
 
   return (
-    <ul className={styles.container}>
-      {comments &&
-        comments.map((comment) => (
-          <Comment key={comment.id} comment={comment} />
-        ))}
-    </ul>
+    <>
+      <ul className={styles.container}>
+        {comments &&
+          comments.map((comment) => (
+            <Comment key={comment.id} comment={comment} />
+          ))}
+      </ul>
+      <AddComment productId={productId} />
+    </>
   );
 };
 

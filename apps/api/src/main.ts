@@ -6,6 +6,8 @@ import * as bodyParser from 'body-parser';
 import * as jose from 'jose';
 import { serialize } from 'cookie';
 import * as cookieParser from 'cookie-parser';
+import { v4 as uuid } from 'uuid';
+import { jwtVerify } from 'jose';
 
 import db from './db';
 import { authenticateToken } from './authenticateToken';
@@ -42,6 +44,7 @@ app.post('/api/auth/login', async (req, res) => {
     const token = await new jose.SignJWT({
       id: 'myUserId',
       username: 'user',
+      fullname: 'User',
     })
       .setProtectedHeader({ alg: 'HS256' })
       .setIssuedAt()
@@ -112,9 +115,29 @@ app.get('/api/comments/:productId', authenticateToken, (req, res) => {
   res.send({ comments: db.getComments(productId as D.ID) });
 });
 
-app.post('/api/comment', authenticateToken, (req, res) => {
-  const comment = req.body;
-  res.send({ comment: db.addComment(comment as D.Comment) });
+app.post('/api/comment', authenticateToken, async (req, res) => {
+  const body = req.body;
+  const { productId } = body;
+  const { comment: text } = body;
+
+  const token = req.cookies.CreaJWT;
+
+  const result = await jwtVerify(token, new TextEncoder().encode(TOKEN_SECRET));
+  const userId = result.payload.id as D.ID;
+  const fullname = result.payload.fullname as string;
+
+  const newComment: D.Comment = {
+    id: uuid(),
+    productId,
+    date: Math.floor(Date.now() / 1000) as unknown as string,
+    fullname,
+    score: 3 as D.Score,
+    text: text as string,
+    userId,
+  };
+  console.log(newComment);
+
+  res.send({ comment: db.addComment(newComment) });
 });
 
 const port = process.env.API_PORT;
