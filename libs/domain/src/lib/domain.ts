@@ -30,6 +30,7 @@ const Password = withMessage(
 export const User = t.type({
   username: Username,
   password: Password,
+  fullname: t.string,
 });
 
 export type User = t.TypeOf<typeof User>;
@@ -56,7 +57,7 @@ export const Comment = t.type({
   id: ID,
   productId: ID,
   text: t.string,
-  username: t.string,
+  fullname: t.string,
   userId: ID,
   score: Score,
   date: Date,

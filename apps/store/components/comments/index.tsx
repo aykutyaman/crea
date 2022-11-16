@@ -2,6 +2,7 @@ import { ReactNode, useEffect, useState } from 'react';
 import * as D from '@crea/domain';
 import getConfig from 'next/config';
 import Comment from '../comment';
+import * as styles from './index.css';
 
 export interface CommentsProps {
   children?: ReactNode;
@@ -24,11 +25,12 @@ export const Comments = ({ productId }: CommentsProps) => {
   }, [productId]);
 
   return (
-    <div>
-      <ul className="">
-        {comments && comments.map((comment) => <Comment comment={comment} />)}
-      </ul>
-    </div>
+    <ul className={styles.container}>
+      {comments &&
+        comments.map((comment) => (
+          <Comment key={comment.id} comment={comment} />
+        ))}
+    </ul>
   );
 };
 

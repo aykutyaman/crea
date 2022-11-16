@@ -305,6 +305,7 @@ export const products: D.Products = [
 export const users: D.Users = [
   {
     username: 'user',
+    fullname: 'User',
     password: '34819d7beeabb9260a5c854bc85b3e44',
   },
 ];
@@ -314,8 +315,8 @@ export const comments: D.Comments = [
     id: '1293920',
     productId: '321001',
     text: "This is cardigan is a comfortable warm classic piece. Great to layer with a light top and you can dress up or down given the jewel buttons. I'm 5'8” 128lbs a 34A and the Small fit fine.",
-    username: 'user',
-    userId: 'myUserId0',
+    fullname: 'Johnny Cash',
+    userId: 'johnny',
     score: 2,
     date: '1668178003',
   },
@@ -323,8 +324,8 @@ export const comments: D.Comments = [
     id: '1293921',
     productId: '321001',
     text: "Great to layer with a light top and you can dress up or down given the jewel buttons. I'm 5'8” 128lbs a 34A and the Small fit fine.",
-    username: 'Marco',
-    userId: 'marco',
+    fullname: 'Tommy Jarvis',
+    userId: 'tommy',
     score: 3,
     date: '1668178003',
   },
@@ -332,7 +333,7 @@ export const comments: D.Comments = [
     id: '1293922',
     productId: '321001',
     text: 'This is cardigan is a comfortable warm classic piece.',
-    username: 'Micheal',
+    fullname: 'Siarhei Dzenisenka',
     userId: 'micheal',
     score: 1,
     date: '1668178003',
