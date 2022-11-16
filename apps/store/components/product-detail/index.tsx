@@ -4,6 +4,7 @@ import * as D from '@crea/domain';
 import * as styles from './index.css';
 import Stars from '../../components/stars';
 import Tabs from '../../components/tabs';
+import Comments from '../../components/comments';
 
 export interface ProductDetailProps {
   children?: ReactNode;
@@ -21,7 +22,7 @@ const tabs: Array<{
 ];
 
 export const ProductDetail = ({ product }: ProductDetailProps) => {
-  const [tab, setTab] = useState<Tab>('details');
+  const [tab, setTab] = useState<Tab>('comments');
 
   const date = new Date(Number(product.arrivalDate) * 1000).toLocaleDateString(
     'tr-TR'
@@ -53,7 +54,7 @@ export const ProductDetail = ({ product }: ProductDetailProps) => {
         {tab === 'details' ? (
           <div className={styles.description}>{product.description}</div>
         ) : (
-          <div>Comments Component</div>
+          <Comments productId={product.id} />
         )}
       </div>
     </div>
