@@ -2,6 +2,7 @@ import { ReactElement, ReactNode, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import * as D from '@crea/domain';
 import getConfig from 'next/config';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import ProductDetail from '../../components/product-detail';
 import Layout from '../../components/layout/product/product';
 
@@ -38,8 +39,18 @@ export const Product = (_props: ProductProps) => {
       });
   }, [router, id]);
 
+  const [queryClient] = useState(() => new QueryClient());
+
   return (
-    <>{product ? <ProductDetail product={product} /> : <div>loading</div>}</>
+    <>
+      {product ? (
+        <QueryClientProvider client={queryClient}>
+          <ProductDetail product={product} />
+        </QueryClientProvider>
+      ) : (
+        <div>loading</div>
+      )}
+    </>
   );
 };
 

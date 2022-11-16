@@ -1,9 +1,10 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode } from 'react';
 import * as D from '@crea/domain';
 import getConfig from 'next/config';
 import Comment from '../comment';
 import * as styles from './index.css';
 import AddComment from '../add-comment';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
 
 export interface CommentsProps {
   children?: ReactNode;
@@ -15,25 +16,66 @@ const {
 } = getConfig();
 
 export const Comments = ({ productId }: CommentsProps) => {
-  const [comments, setComments] = useState<D.Comments>(null);
+  const queryClient = useQueryClient();
 
-  useEffect(() => {
+  const mutation = useMutation(
+    (comment: string) => {
+      return fetch(`${API}/comment`, {
+        credentials: 'include',
+        method: 'POST',
+        body: JSON.stringify({ comment, productId }),
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => data);
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries('comments');
+      },
+    }
+  );
+
+  const {
+    isLoading,
+    error,
+    data: comments,
+  } = useQuery('comments', () =>
     fetch(`${API}/comments/${productId}`, {
       credentials: 'include',
     })
-      .then((res) => res.json())
-      .then((data) => setComments(data.comments));
-  }, [productId]);
+      .then((res) => {
+        if (!res.ok) throw new Error(String(res.status));
+        return res.json();
+      })
+      .then((data) => data.comments as D.Comments)
+      .catch((error) => {
+        // TODO: handle all errors, decoding, network etc.
+        throw new Error(error);
+      })
+  );
+
+  if (isLoading) return 'Loading...';
+
+  if (error) return 'An error has occured';
 
   return (
     <>
       <ul className={styles.container}>
-        {comments &&
-          comments.map((comment) => (
-            <Comment key={comment.id} comment={comment} />
-          ))}
+        {comments.map((comment) => (
+          <Comment key={comment.id} comment={comment} />
+        ))}
       </ul>
-      <AddComment productId={productId} />
+      <AddComment
+        productId={productId}
+        onSubmit={(comment) => {
+          console.log('SUBMITTED');
+          mutation.mutate(comment);
+        }}
+      />
     </>
   );
 };

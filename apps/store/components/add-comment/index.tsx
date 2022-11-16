@@ -1,32 +1,24 @@
 import { ReactNode, useState } from 'react';
 import * as D from '@crea/domain';
 import getConfig from 'next/config';
+import { useQuery } from 'react-query';
 import * as styles from './index.css';
 
 export interface AddCommentProps {
   children?: ReactNode;
   productId: D.ID;
+  onSubmit: (comment: string) => void;
 }
 
 const {
   publicRuntimeConfig: { API },
 } = getConfig();
 
-export const AddComment = ({ productId }: AddCommentProps) => {
+export const AddComment = ({ productId, onSubmit }: AddCommentProps) => {
   const [comment, setComment] = useState('');
 
   const handleSubmit = (_x: React.MouseEvent<HTMLButtonElement>) => {
-    fetch(`${API}/comment`, {
-      credentials: 'include',
-      method: 'POST',
-      body: JSON.stringify({ comment, productId }),
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => data);
+    onSubmit(comment);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
