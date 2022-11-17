@@ -1,3 +1,5 @@
 # Development
 
-`npx nx run api:serve`
+`npm install`
+
+`npm run start`
