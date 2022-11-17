@@ -19,7 +19,7 @@ export const Comments = ({ productId }: CommentsProps) => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation(
-    (comment: string) => {
+    (comment: D.CommentLike) => {
       return fetch(`${API}/comment`, {
         credentials: 'include',
         method: 'POST',
@@ -70,9 +70,7 @@ export const Comments = ({ productId }: CommentsProps) => {
         ))}
       </ul>
       <AddComment
-        productId={productId}
         onSubmit={(comment) => {
-          console.log('SUBMITTED');
           mutation.mutate(comment);
         }}
       />

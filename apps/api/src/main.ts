@@ -118,7 +118,7 @@ app.get('/api/comments/:productId', authenticateToken, (req, res) => {
 app.post('/api/comment', authenticateToken, async (req, res) => {
   const body = req.body;
   const { productId } = body;
-  const { comment: text } = body;
+  const { comment } = body;
 
   const token = req.cookies.CreaJWT;
 
@@ -132,10 +132,10 @@ app.post('/api/comment', authenticateToken, async (req, res) => {
     date: Math.floor(Date.now() / 1000) as unknown as string,
     fullname,
     score: 3 as D.Score,
-    text: text as string,
+
+    text: comment.text,
     userId,
   };
-  console.log(newComment);
 
   res.send({ comment: db.addComment(newComment) });
 });

@@ -34,3 +34,9 @@ globalStyle('html, body, #__next', {
 globalStyle('li', {
   listStyle: 'none',
 });
+
+globalStyle(`input`, {
+  width: '100%',
+  height: '100%',
+  padding: vars.space['3x'],
+});

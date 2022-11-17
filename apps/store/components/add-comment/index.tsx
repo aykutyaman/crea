@@ -1,41 +1,64 @@
 import { ReactNode, useState } from 'react';
 import * as D from '@crea/domain';
 import getConfig from 'next/config';
-import { useQuery } from 'react-query';
+import {
+  AutoField,
+  AutoForm,
+  SubmitField,
+  ErrorsField,
+} from 'uniforms-unstyled';
 import * as styles from './index.css';
+import { createValidator } from '../../pages/helpers';
+import JSONSchemaBridge from 'uniforms-bridge-json-schema';
+
+const schemaValidator = createValidator(D.CommentLike);
+const schema = {
+  title: 'Comment',
+  type: 'object',
+  properties: {
+    text: { type: 'string' },
+  },
+  required: ['text'],
+};
+const bridge = new JSONSchemaBridge(schema, schemaValidator);
 
 export interface AddCommentProps {
   children?: ReactNode;
-  productId: D.ID;
-  onSubmit: (comment: string) => void;
+  onSubmit: (comment: D.CommentLike) => void;
 }
 
 const {
   publicRuntimeConfig: { API },
 } = getConfig();
 
-export const AddComment = ({ productId, onSubmit }: AddCommentProps) => {
-  const [comment, setComment] = useState('');
-
-  const handleSubmit = (_x: React.MouseEvent<HTMLButtonElement>) => {
+export const AddComment = ({ onSubmit }: AddCommentProps) => {
+  const handleSubmit = (comment: D.CommentLike) => {
     onSubmit(comment);
-  };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setComment(e.target.value);
   };
 
   return (
     <div className={styles.container}>
-      <input
-        onChange={handleInputChange}
-        placeholder="Your comment..."
-        className={styles.input}
-      />
+      <AutoForm
+        schema={bridge}
+        onSubmit={(comment) => {
+          const decoded = D.CommentLike.decode(comment);
 
-      <button onClick={handleSubmit} className={styles.button}>
-        Add Comment
-      </button>
+          if (decoded._tag === 'Right') {
+            handleSubmit(decoded.right);
+          }
+        }}
+        ref={(form) => {
+          if (form) form.reset();
+        }}
+      >
+        <AutoField
+          name="text"
+          className={styles.input}
+          placeholder="Your comment..."
+        />
+        <SubmitField className={styles.button} value="Comment" />
+        <ErrorsField />
+      </AutoForm>
     </div>
   );
 };

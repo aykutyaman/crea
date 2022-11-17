@@ -1,5 +1,9 @@
 import { sprinkles } from '@crea/design';
-import { style } from '@vanilla-extract/css';
+import { style, globalStyle } from '@vanilla-extract/css';
+
+globalStyle(`label`, {
+  display: 'none',
+});
 
 export const container = style([
   sprinkles({
@@ -16,7 +20,6 @@ export const input = style([
     borderWidth: '0x',
     width: 'full',
     flexBasis: '3/4',
-    padding: '3x',
     borderRadius: '0x',
     borderColor: 'gray-300',
   }),
@@ -32,6 +35,7 @@ export const button = style([
     boxShadow: 'medium',
     padding: '3x',
     marginY: '3x',
+    maxWidth: '1/4',
   }),
   {},
 ]);

@@ -74,3 +74,8 @@ export type Comment = t.TypeOf<typeof Comment>;
 
 export const Comments = t.array(Comment);
 export type Comments = t.TypeOf<typeof Comments>;
+
+export const CommentLike = t.type({
+  text: withMessage(t.string, () => `Comment text should not be empty`),
+});
+export type CommentLike = t.TypeOf<typeof CommentLike>;
