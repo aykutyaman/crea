@@ -36,7 +36,7 @@ export interface LoginProps {}
 export function Login(_props: LoginProps) {
   const router = useRouter();
 
-  const handleLogin = async (user: D.User) => {
+  const handleLogin = async (user: D.UserLike) => {
     const request = await fetch(`${API}/auth/login`, {
       method: 'POST',
       body: JSON.stringify(user),

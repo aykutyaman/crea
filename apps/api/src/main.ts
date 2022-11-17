@@ -28,8 +28,6 @@ app.use(
   cors({
     credentials: true,
     origin: (origin, callback) => {
-      console.log({ origin });
-
       if (origin && whiteList.includes(origin)) {
         return callback(null, true);
       }
@@ -39,12 +37,14 @@ app.use(
 );
 
 app.post('/api/auth/login', async (req, res) => {
-  const { username } = req.body;
-  if (username === 'user') {
+  const { username, password } = req.body;
+
+  const user = db.getUser(username, password);
+  if (user) {
     const token = await new jose.SignJWT({
       id: 'myUserId',
-      username: 'user',
-      fullname: 'User',
+      username: user.username,
+      fullname: user.fullname,
     })
       .setProtectedHeader({ alg: 'HS256' })
       .setIssuedAt()

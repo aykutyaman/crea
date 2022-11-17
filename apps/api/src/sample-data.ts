@@ -306,7 +306,7 @@ export const users: D.Users = [
   {
     username: 'user',
     fullname: 'User',
-    password: '34819d7beeabb9260a5c854bc85b3e44',
+    password: 'bc17c97c3d897d43b7e07ca0266eafa8',
   },
 ];
 

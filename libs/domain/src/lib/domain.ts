@@ -18,15 +18,17 @@ export const Date = t.string;
 export type Date = t.TypeOf<typeof Date>;
 
 // TODO: distinguish User(logged) and UserLike(not logged)
-const Username = withMessage(
+export const Username = withMessage(
   t.string,
   (value) => `Username should be a string: ${value}`
 );
+export type Username = t.TypeOf<typeof Username>;
 
-const Password = withMessage(
+export const Password = withMessage(
   t.string,
   (value) => `Password should be a string: ${value}`
 );
+export type Password = t.TypeOf<typeof Password>;
 
 export const UserLike = t.type({
   username: Username,

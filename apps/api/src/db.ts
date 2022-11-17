@@ -1,8 +1,10 @@
 import * as D from '@crea/domain';
+import * as md5 from 'md5';
 import * as sample from './sample-data';
 
 let products = sample.products;
 let comments = sample.comments;
+const users = sample.users;
 
 // NOTE: The code in this module is only for demonstration, so it's ugly and
 // error prone.
@@ -15,6 +17,11 @@ const db = {
   },
   getComments: (productId: D.ID) => {
     return comments.filter((comment) => comment.productId === productId);
+  },
+  getUser: (username: D.Username, password: D.Password) => {
+    return users.find(
+      (user) => user.username === username && user.password === md5(password)
+    );
   },
   addComment: (comment: D.Comment): D.Comment => {
     const productComments = comments.filter(

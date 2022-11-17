@@ -27,7 +27,7 @@ export const Nav = (_props: NavProps) => {
 
   return (
     <nav className={styles.nav}>
-      <a onClick={handleLogout} className={styles.logoutLink}>
+      <a href="#" onClick={handleLogout} className={styles.logoutLink}>
         Logout
       </a>
     </nav>
