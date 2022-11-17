@@ -10,7 +10,6 @@ export interface ProductListItemProps {
 }
 
 export function ProductListItem({ product }: ProductListItemProps) {
-  console.log(product);
   return (
     <li className={styles.item}>
       <Image
