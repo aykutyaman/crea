@@ -15,11 +15,30 @@ export const container = style([
   {},
 ]);
 
+export const fieldsContainer = style([
+  sprinkles({
+    display: 'flex',
+    gap: '2x',
+  }),
+  {},
+]);
+
 export const input = style([
   sprinkles({
     borderWidth: '0x',
     width: 'full',
     flexBasis: '3/4',
+    borderRadius: '0x',
+    borderColor: 'gray-300',
+  }),
+  {},
+]);
+
+export const score = style([
+  sprinkles({
+    borderWidth: '0x',
+    width: 'full',
+    flexBasis: '1/4',
     borderRadius: '0x',
     borderColor: 'gray-300',
   }),

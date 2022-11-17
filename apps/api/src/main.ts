@@ -112,7 +112,9 @@ app.get('/api/products/:productId', authenticateToken, (req, res) => {
 
 app.get('/api/comments/:productId', authenticateToken, (req, res) => {
   const { productId } = req.params;
-  res.send({ comments: db.getComments(productId as D.ID) });
+  res.send({
+    comments: db.getComments(productId as D.ID),
+  });
 });
 
 app.post('/api/comment', authenticateToken, async (req, res) => {
@@ -131,7 +133,7 @@ app.post('/api/comment', authenticateToken, async (req, res) => {
     productId,
     date: Math.floor(Date.now() / 1000) as unknown as string,
     fullname,
-    score: 3 as D.Score,
+    score: comment.score as D.Score,
 
     text: comment.text,
     userId,

@@ -77,5 +77,9 @@ export type Comments = t.TypeOf<typeof Comments>;
 
 export const CommentLike = t.type({
   text: withMessage(t.string, () => `Comment text should not be empty`),
+  score: withMessage(
+    Score,
+    (value) => `Score should be a number from 0-5 got: ${value}`
+  ),
 });
 export type CommentLike = t.TypeOf<typeof CommentLike>;

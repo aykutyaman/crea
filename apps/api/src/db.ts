@@ -29,7 +29,7 @@ const db = {
 
     const average = (sum / (productComments.length || 1)) as D.Score;
 
-    comments = comments.concat(comment);
+    comments = [comment, ...comments];
 
     products = products.map((product) => {
       if (product.id === comment.productId) {

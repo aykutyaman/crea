@@ -1,6 +1,5 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode } from 'react';
 import * as D from '@crea/domain';
-import getConfig from 'next/config';
 import {
   AutoField,
   AutoForm,
@@ -17,8 +16,13 @@ const schema = {
   type: 'object',
   properties: {
     text: { type: 'string' },
+    score: {
+      type: 'integer',
+      minimum: 0,
+      maximum: 5,
+    },
   },
-  required: ['text'],
+  required: ['text', 'score'],
 };
 const bridge = new JSONSchemaBridge(schema, schemaValidator);
 
@@ -26,10 +30,6 @@ export interface AddCommentProps {
   children?: ReactNode;
   onSubmit: (comment: D.CommentLike) => void;
 }
-
-const {
-  publicRuntimeConfig: { API },
-} = getConfig();
 
 export const AddComment = ({ onSubmit }: AddCommentProps) => {
   const handleSubmit = (comment: D.CommentLike) => {
@@ -51,11 +51,19 @@ export const AddComment = ({ onSubmit }: AddCommentProps) => {
           if (form) form.reset();
         }}
       >
-        <AutoField
-          name="text"
-          className={styles.input}
-          placeholder="Your comment..."
-        />
+        <div className={styles.fieldsContainer}>
+          <AutoField
+            name="text"
+            className={styles.input}
+            placeholder="Your comment..."
+          />
+          <AutoField
+            name="score"
+            className={styles.score}
+            placeholder="Score"
+          />
+        </div>
+
         <SubmitField className={styles.button} value="Comment" />
         <ErrorsField />
       </AutoForm>
