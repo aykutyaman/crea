@@ -24,6 +24,15 @@ const nextConfig = {
   images: {
     domains: ['www.creainc.us', 'res.cloudinary.com'],
   },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/products',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = withVanillaExtract(withNx(nextConfig));
